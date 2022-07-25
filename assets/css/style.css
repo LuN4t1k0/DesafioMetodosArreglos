@@ -118,6 +118,7 @@ table {
 th {
   text-align: inherit;
   text-align: -webkit-match-parent;
+  
 }
 tbody,
 td,
@@ -127,6 +128,8 @@ tr {
   border: 0 solid;
   border-color: inherit;
 }
+
+
 label {
   display: inline-block;
 }
