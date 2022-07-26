@@ -32,7 +32,7 @@ const agregarTarea = () => {
     let nuevaTarea = {
       id: Date.now(),
       descripcion: inputTarea.value,
-      estado: "pendiente",
+      estado: "Pendiente",
     };
     tareas.push(nuevaTarea);
     inputTarea.value = "";
