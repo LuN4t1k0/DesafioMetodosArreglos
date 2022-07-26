@@ -4,12 +4,13 @@ let tTareas = document.querySelector("#tTareas");
 let tbody = document.querySelector('#contenido')
 let inputTarea = document.querySelector('#inputTarea')
 let btnAgregar = document.querySelector('#formTareas')
-let contador = 0
 const tareas = []
 
 const renderTareas = () => {
   let html =""
+  let contador = 0
   for (const tarea of tareas) {
+    contador++
     html += /*html*/ `
     <tr>
       <th scope="row">${contador}</th>
@@ -45,6 +46,7 @@ const terminaTarea = (id) => {
 const eliminarTarea = (id) => {
   const index = tareas.findIndex(t => t.id === id)
   tareas.splice(index, 1)
+  filtrarTareas()
   renderTareas()
 }
 
