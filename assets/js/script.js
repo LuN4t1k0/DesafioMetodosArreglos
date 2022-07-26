@@ -3,7 +3,25 @@ let tTareas = document.querySelector("#tTareas");
 let tbody = document.querySelector("#contenido");
 let inputTarea = document.querySelector("#inputTarea");
 let btnAgregar = document.querySelector("#formTareas");
-const tareas = [];
+// const tareas = [];
+
+const tareas = [
+  {
+    id: Date.now()+1,
+    descripcion: "Reunion Cordinacion",
+    estado: "Pendiente",
+  },
+  {
+    id: Date.now()+2,
+    descripcion: "Revision ETL",
+    estado: "Pendiente",
+  },
+  {
+    id: Date.now()+3,
+    descripcion: "Definicion Protocolo",
+    estado: "Pendiente",
+  },
+]
 
 const renderTareas = () => {
   let html = "";
@@ -69,3 +87,30 @@ const validarTarea = () => {
     alert("Debes ingresar una tarea");
   }
 };
+
+const cargaDatos = () => {
+  
+  let html = "";
+  let contador = 0;
+  for (const tarea of tareas) {
+    contador++;
+    html += /*html*/ `
+    <tr>
+      <th scope="row">${contador}</th>
+        <td>${tarea.descripcion}</td>
+        <td>${tarea.estado}</td>
+        <td>
+          <button class="btn btn-danger" onclick="eliminarTarea(${tarea.id})">ELIMINAR</button>
+          <button class="btn btn-success ms-1" onclick="actualizarTarea(${tarea.id})">TERMINAR</button>
+        </td>
+    </tr>`;
+  }
+  contenido.innerHTML = html;
+  tTareas.innerHTML = tareas.length;
+}
+
+
+
+window.onload = ()=> {
+  cargaDatos()
+}
