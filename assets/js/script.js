@@ -1,10 +1,9 @@
 
-// let tRealizadas = document.querySelector('#tTareas');
-// let tTareas = document.querySelector("#tTareas");
+let tRealizadas = document.querySelector('#tRealizadas');
+let tTareas = document.querySelector("#tTareas");
 let tbody = document.querySelector('#contenido')
 let inputTarea = document.querySelector('#inputTarea')
 let btnAgregar = document.querySelector('#formTareas')
-
 let contador = 0
 const tareas = []
 
@@ -18,20 +17,15 @@ const renderTareas = () => {
         <td>${tarea.estado}</td>
         <td>
           <button class="btn btn-danger" onclick="eliminarTarea(${tarea.id})">ELIMINAR</button>
-          <button class="btn btn-success ms-1">TERMINAR</button>
+          <button class="btn btn-success ms-1" onclick="terminaTarea(${tarea.id})">TERMINAR</button>
         </td>
     </tr>`;
   }
   contenido.innerHTML = html
+  tTareas.innerHTML = tareas.length
 };
 
-// const agregarTareas = () => {
-//   let nuevaTarea = { id: Date.now(), descripcion: inputTarea.value, estado: "pendiente" }
-//   tareas.push(nuevaTarea)
-//   inputTarea.value = ""
-//   renderTareas()
-//   console.log(tareas);
-// }
+
 
 const agregarTarea = () => {
   let nuevaTarea = { id: Date.now(), descripcion: inputTarea.value, estado: "pendiente" }
@@ -40,12 +34,13 @@ const agregarTarea = () => {
   renderTareas()
 }
 
-// const terminaTarea = (id) => {
-//   const index = tareas.findIndex(t => t.id == id)
-//   tareas[index] = estado = "Finalizada"
-//   renderTareas()
-//   console.log(tareas);
-// }
+const terminaTarea = (id) => {
+  const index = tareas.findIndex(t => t.id == id)
+  tareas[index] = {id : tareas[index].id, descripcion : tareas[index].descripcion, estado : "Finalizado"}
+  filtrarTareas()
+  renderTareas()
+  console.log(tareas);
+}
 
 const eliminarTarea = (id) => {
   const index = tareas.findIndex(t => t.id === id)
@@ -53,9 +48,7 @@ const eliminarTarea = (id) => {
   renderTareas()
 }
 
-// btnAgregar.addEventListener('click', agregarTarea)
-const eliminarInvitado = (id) => {
-  const index =  invitados.findIndex(ele => ele.id === id)
-  invitados.splice(index, 1)
-  renderInvitados()
+const filtrarTareas = () => {
+  tareasFinalizadas = tareas.filter(t => t.estado ==="Finalizado")
+  tRealizadas.innerHTML = tareasFinalizadas.length
 }
