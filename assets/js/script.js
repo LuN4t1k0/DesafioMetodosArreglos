@@ -8,30 +8,27 @@ let btnAgregar = document.querySelector("#formTareas");
 
 const tareas = [
   {
-    id: Date.now()+1,
+    id: Date.now() + 1,
     descripcion: "Reunion Cordinacion",
     estado: "Pendiente",
   },
   {
-    id: Date.now()+2,
+    id: Date.now() + 2,
     descripcion: "Revision ETL",
     estado: "Pendiente",
   },
   {
-    id: Date.now()+3,
+    id: Date.now() + 3,
     descripcion: "Definicion Protocolo",
     estado: "Pendiente",
   },
-]
+];
 
-const renderTareas = () => {
-  let html = "";
-  let contador = 0;
-  for (const tarea of tareas) {
-    contador++;
-    html += /*html*/ `
+const template = (tarea) => {
+  let id = tareas.findIndex(t => t.id === tarea.id)
+  return /*html*/ `
     <tr>
-      <th scope="row">${contador}</th>
+      <th scope="row">${id+1}</th>
         <td id="${tarea.id}">${tarea.descripcion}</td>
         <td>${tarea.estado}</td>
         <td>
@@ -39,6 +36,14 @@ const renderTareas = () => {
           <button class="btn btn-success ms-1" onclick="actualizarTarea(${tarea.id})">TERMINAR</button>
         </td>
     </tr>`;
+};
+
+const renderTareas = () => {
+  let html = "";
+  let contador = 0
+  for (const tarea of tareas) {
+    html += template(tarea);
+    contador++
   }
   contenido.innerHTML = html;
   tTareas.innerHTML = tareas.length;
@@ -81,37 +86,19 @@ const eliminarTarea = (id) => {
 const filtrarTareas = () => {
   tareasFinalizadas = tareas.filter((t) => t.estado === "Finalizado");
   tRealizadas.innerHTML = tareasFinalizadas.length;
-
 };
 
-const validarTarea = () => {
-  if (inputTarea.value.length == 0) {
-    alert("Debes ingresar una tarea");
-  }
-};
 
 const cargaDatos = () => {
-  
   let html = "";
   let contador = 0;
   for (const tarea of tareas) {
-    contador++;
-    html += /*html*/ `
-    <tr>
-      <th scope="row">${contador}</th>
-      <td id="${tarea.id}">${tarea.descripcion}</td>
-        <td>${tarea.estado}</td>
-        <td>
-          <button class="btn btn-danger" onclick="eliminarTarea(${tarea.id})">ELIMINAR</button>
-          <button class="btn btn-success ms-1" onclick="actualizarTarea(${tarea.id})">TERMINAR</button>
-        </td>
-    </tr>`;
+    html += template(tarea);
   }
   contenido.innerHTML = html;
   tTareas.innerHTML = tareas.length;
-}
+};
 
-
-window.onload = ()=> {
-  cargaDatos()
-}
+window.onload = () => {
+  cargaDatos();
+};
