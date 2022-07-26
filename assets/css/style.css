@@ -1448,3 +1448,6 @@ button:focus {
   }
 }
 
+.fin {
+  text-decoration: line-through double #f93154;
+}
