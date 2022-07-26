@@ -3,6 +3,7 @@ let tTareas = document.querySelector("#tTareas");
 let tbody = document.querySelector("#contenido");
 let inputTarea = document.querySelector("#inputTarea");
 let btnAgregar = document.querySelector("#formTareas");
+
 // const tareas = [];
 
 const tareas = [
@@ -31,7 +32,7 @@ const renderTareas = () => {
     html += /*html*/ `
     <tr>
       <th scope="row">${contador}</th>
-        <td>${tarea.descripcion}</td>
+        <td id="${tarea.id}">${tarea.descripcion}</td>
         <td>${tarea.estado}</td>
         <td>
           <button class="btn btn-danger" onclick="eliminarTarea(${tarea.id})">ELIMINAR</button>
@@ -80,6 +81,7 @@ const eliminarTarea = (id) => {
 const filtrarTareas = () => {
   tareasFinalizadas = tareas.filter((t) => t.estado === "Finalizado");
   tRealizadas.innerHTML = tareasFinalizadas.length;
+
 };
 
 const validarTarea = () => {
@@ -97,7 +99,7 @@ const cargaDatos = () => {
     html += /*html*/ `
     <tr>
       <th scope="row">${contador}</th>
-        <td>${tarea.descripcion}</td>
+      <td id="${tarea.id}">${tarea.descripcion}</td>
         <td>${tarea.estado}</td>
         <td>
           <button class="btn btn-danger" onclick="eliminarTarea(${tarea.id})">ELIMINAR</button>
@@ -108,7 +110,6 @@ const cargaDatos = () => {
   contenido.innerHTML = html;
   tTareas.innerHTML = tareas.length;
 }
-
 
 
 window.onload = ()=> {
