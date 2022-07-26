@@ -20,19 +20,19 @@
 
             <h4 class="text-center my-3 pb-3">To Do App</h4>
             
-            <div id="formTareas" class="row row-cols-lg-auto g-3 justify-content-center align-items-center mb-4 pb-2">
+            <form id="formTareas" class="row row-cols-lg-auto g-3 justify-content-center align-items-center mb-4 pb-2">
               <div class="col-12">
                 <div class="form-outline">
-                  <input type="text" id="inputTarea" class="" />
-                  <!-- <label class="form-label" for="inputTarea">Agrega una nueva tarea</label> -->
+                  <input type="text" id="inputTarea" class="form-control" />
+                  <label class="form-label" for="inputTarea">Agrega una nueva tarea</label>
                 </div>
               </div>
 
               <div class="col-12">
-                <button class="btn btn-primary" onclick="agregarTarea()">Agregar</button>
+                <button type="submit" class="btn btn-primary">Agregar</button>
               </div>
 
-            </div>
+            </form>
 
             <table class="table mb-4">
               <thead>
@@ -69,3 +69,21 @@
 </body>
 </html>
 
+                <!-- <tr>
+                  <th scope="row">2</th>
+                  <td>Renew car insurance</td>
+                  <td>In progress</td>
+                  <td>
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                    <button type="submit" class="btn btn-success ms-1">Finished</button>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">3</th>
+                  <td>Sign up for online course</td>
+                  <td>In progress</td>
+                  <td>
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                    <button type="submit" class="btn btn-success ms-1">Finished</button>
+                  </td>
+                </tr> -->
