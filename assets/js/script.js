@@ -25,12 +25,20 @@ const tareas = [
   },
 ];
 
+const marcarfin = (tarea) => {
+  if(tarea.estado === "Finalizado"){
+    return "fin"
+  }
+  return ""
+}
+
 const template = (tarea) => {
   let id = tareas.findIndex(t => t.id === tarea.id)
   return /*html*/ `
     <tr>
       <th scope="row">${id+1}</th>
-        <td class ="description" id="${tarea.id}">${tarea.descripcion}</td>
+        <!-- <td class="description ${tarea.estado === "Finalizado" ? "fin" : ""}" id="${tarea.id}">${tarea.descripcion}</td> -->
+        <td class="description ${marcarfin(tarea)}" id="${tarea.id}">${tarea.descripcion}</td>
         <td>${tarea.estado}</td>
         <td>
           <button class="btn btn-danger" onclick="eliminarTarea(${tarea.id})">ELIMINAR</button>
